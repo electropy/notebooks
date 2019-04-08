@@ -33,7 +33,8 @@ RUN apt-get update && \
 
 RUN cd $HOME/work;\
     pip install --upgrade pip; \
-    pip install plotly \
+    pip install matplotlib \
+                plotly \
                 dash \
                 dash_core_components \
                 dash_html_components \
