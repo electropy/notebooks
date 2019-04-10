@@ -44,7 +44,7 @@ RUN cd $HOME/work;\
                 ipywidgets \
                 nbconvert==5.4.0 \
                 jupyterlab>=0.35.4; \
-    git clone --single-branch -b master https://github.com/electropy/notebooks.git;   \
+    git clone --single-branch -b master https://github.com/electropy/notebooks.git;    \
     chmod -R 777 $HOME/work/notebooks; \
     cd notebooks;\
     git clone --single-branch -b master https://github.com/electropy/electropy.git; \
