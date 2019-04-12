@@ -36,11 +36,6 @@ RUN apt-get update && \
     apt-get autoremove && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-# google chrome
-RUN apt-get update -y && \
-    apt-get install -y google-chrome-stable
-
-
 RUN cd $HOME/work;\
     pip install --upgrade pip; \
     pip install matplotlib \
