@@ -46,6 +46,7 @@ RUN cd $HOME/work;\
                 flask \
                 ipywidgets \
                 nbconvert==5.4.0 \
+                psutil \
                 jupyterlab>=0.35.4; \
     git clone --single-branch -b orca https://github.com/electropy/notebooks.git;     \
     chmod -R 777 $HOME/work/notebooks; \
@@ -55,7 +56,8 @@ RUN cd $HOME/work;\
     pip install -e .;\
     cd ..;\
     cd bin; \
-    wget "https://github.com/plotly/orca/releases/download/v1.2.1/orca-1.2.1-x86_64.AppImage";
+    wget "https://github.com/plotly/orca/releases/download/v1.2.1/orca-1.2.1-x86_64.AppImage";\
+    chmod +x orca-1.2.1-x86_64.AppImage;
 
 ENV PATH "/home/jovyan/work/notebooks/bin:$PATH"
 
