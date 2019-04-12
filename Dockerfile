@@ -27,7 +27,7 @@ RUN apt-get update && \
         libxtst6 \
         libgconf2-4 \
         xvfb \
-        libfuse \
+        fuse \
         libopenblas-base \
         python3-dev && \
     apt-get clean && \
