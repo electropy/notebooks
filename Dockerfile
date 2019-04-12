@@ -54,7 +54,7 @@ RUN cd $HOME/work;\
     cd electropy;\
     pip install -e .;\
     cd ..;\
-    cd bin;\
+    cd bin; \
     wget "https://github.com/plotly/orca/releases/download/v1.2.1/orca-1.2.1-x86_64.AppImage";
 
 ENV PATH "/home/jovyan/work/notebooks/bin:$PATH"
