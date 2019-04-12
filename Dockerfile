@@ -25,7 +25,7 @@ RUN apt-get update && \
         imagemagick \
         gnuplot-x11 \
         libopenblas-base \
-        libxtst6:i386 \
+        libxtst6 \
         python3-dev && \
     apt-get clean && \
     apt-get autoremove && \
