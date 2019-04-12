@@ -28,6 +28,3 @@ RUN cd $HOME;\
 WORKDIR $HOME/notebooks
 
 USER $NB_UID
-
-RUN jupyter labextension install @jupyterlab/plotly-extension;  \
-    jupyter labextension install @jupyterlab/celltags;
