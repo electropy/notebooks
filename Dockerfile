@@ -44,6 +44,7 @@ RUN cd $HOME/work;\
                 nbconvert==5.4.0 \
                 jupyterlab>=0.35.4; \
     conda install -c plotly plotly-orca;\
+    conda install psutil;\
     git clone --single-branch -b orca https://github.com/electropy/notebooks.git;     \
     chmod -R 777 $HOME/work/notebooks; \
     cd notebooks;\
