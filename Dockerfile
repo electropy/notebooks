@@ -47,7 +47,7 @@ RUN cd $HOME/work;\
     git clone --single-branch -b master https://github.com/electropy/notebooks.git;    \
     chmod -R 777 $HOME/work/notebooks; \
     cd notebooks;\
-    git clone --single-branch -b master https://github.com/electropy/electropy.git; \
+    git clone --single-branch -b master https://github.com/electropy/electropy.git;  \
     cd electropy;\
     pip install -e .;\
     cd ..;
