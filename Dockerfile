@@ -24,8 +24,9 @@ RUN apt-get update && \
         rsync \
         imagemagick \
         gnuplot-x11 \
-        libopenblas-base \
         libxtst6 \
+        libgconf2-4 \
+        libopenblas-base \
         python3-dev && \
     apt-get clean && \
     apt-get autoremove && \
@@ -59,3 +60,6 @@ RUN cd $HOME/work;\
 WORKDIR $HOME/work/notebooks
 
 USER $NB_UID
+
+RUN jupyter labextension install @jupyterlab/plotly-extension;  \
+    jupyter labextension install @jupyterlab/celltags;
