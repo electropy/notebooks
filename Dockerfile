@@ -30,11 +30,6 @@ RUN apt-get update && \
     apt-get autoremove && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN cd ~;\
-    wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda.sh;\
-    bash ~/miniconda.sh -b -p $HOME/miniconda;\
-    echo ". ~/miniconda/etc/profile.d/conda.sh" >> ~/.bashrc;\
-    source ~/.bashrc;\
 
 RUN cd $HOME/work;\
     pip install --upgrade pip; \
@@ -49,8 +44,7 @@ RUN cd $HOME/work;\
                 ipywidgets \
                 nbconvert==5.4.0 \
                 jupyterlab>=0.35.4; \
-    conda install -c plotly plotly-orca;\
-    git clone --single-branch -b orca https://github.com/electropy/notebooks.git;    \
+    git clone --single-branch -b master https://github.com/electropy/notebooks.git;    \
     chmod -R 777 $HOME/work/notebooks; \
     cd notebooks;\
     git clone --single-branch -b master https://github.com/electropy/electropy.git;  \
