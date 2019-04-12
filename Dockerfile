@@ -1,4 +1,4 @@
-FROM jupyter/scipy-notebook
+FROM jupyter/base-notebook:8ccdfc1da8d5
 
 USER root
 
@@ -26,6 +26,7 @@ RUN apt-get update && \
         gnuplot-x11 \
         libxtst6 \
         libgconf2-4 \
+        xvfb \
         libopenblas-base \
         python3-dev && \
     apt-get clean && \
@@ -46,16 +47,17 @@ RUN cd $HOME/work;\
                 ipywidgets \
                 nbconvert==5.4.0 \
                 jupyterlab>=0.35.4; \
-    conda install psutil;\
-    conda install -c plotly plotly-orca;\
     git clone --single-branch -b orca https://github.com/electropy/notebooks.git;     \
     chmod -R 777 $HOME/work/notebooks; \
     cd notebooks;\
     git clone --single-branch -b master https://github.com/electropy/electropy.git;  \
     cd electropy;\
     pip install -e .;\
-    cd ..;
-    
+    cd ..;\
+    cd bin;\
+    wget "https://github.com/plotly/orca/releases/download/v1.2.1/orca-1.2.1-x86_64.AppImage";
+
+ENV PATH "/home/jovyan/work/notebooks/bin:$PATH"
 
 WORKDIR $HOME/work/notebooks
 
