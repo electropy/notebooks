@@ -25,6 +25,7 @@ RUN apt-get update && \
         imagemagick \
         gnuplot-x11 \
         libxtst6 \
+        libgtk2.0.0 \
         libgconf2-4 \
         xvfb \
         fuse \
@@ -51,17 +52,18 @@ RUN cd $HOME/work;\
                 psutil \
                 jupyterlab>=0.35.4; \
     git clone --single-branch -b orca https://github.com/electropy/notebooks.git;     \
-    chmod -R 777 $HOME/work/notebooks; \
     cd notebooks;\
     git clone --single-branch -b master https://github.com/electropy/electropy.git;  \
     cd electropy;\
     pip install -e .;\
-    cd ..;\
-    cd bin; \
-    wget "https://github.com/plotly/orca/releases/download/v1.2.1/orca-1.2.1-x86_64.AppImage";\
-    chmod 777 orca-1.2.1-x86_64.AppImage;
+    cd ..; \
+    cd $HOME;
 
-ENV PATH "/home/jovyan/work/notebooks/bin:$PATH"
+# Download orca binary and make it executable under xvfb
+RUN wget https://github.com/plotly/orca/releases/download/v1.1.1/orca-1.1.1-x86_64.AppImage -P /home
+RUN chmod 777 /home/orca-1.1.1-x86_64.AppImage 
+RUN printf '#!/bin/bash \nxvfb-run --auto-servernum --server-args "-screen 0 640x480x24" /home/orca-1.1.1-x86_64.AppImage "$@"' > /usr/bin/orca
+RUN chmod 777 /usr/bin/orca
 
 WORKDIR $HOME/work/notebooks
 
