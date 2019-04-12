@@ -3,7 +3,7 @@ FROM continuumio/miniconda
 USER root
 
 RUN conda create -n venv python=3.6;\
-    conda activate venv;
+    source activate venv;
 
 RUN cd $HOME;\
     pip install --upgrade pip; \
