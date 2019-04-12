@@ -1,9 +1,6 @@
-FROM continuumio/miniconda
+FROM continuumio/miniconda3
 
 USER root
-
-RUN conda create -n venv python=3.6;\
-    . activate venv;
 
 RUN cd $HOME;\
     pip install --upgrade pip; \
