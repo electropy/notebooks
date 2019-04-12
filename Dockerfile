@@ -2,7 +2,10 @@ FROM continuumio/miniconda
 
 USER root
 
-RUN cd $HOME/work;\
+RUN conda create -n venv python=3.6;\
+    conda activate venv;
+
+RUN cd $HOME;\
     pip install --upgrade pip; \
     pip install matplotlib \
                 plotly \
@@ -18,14 +21,14 @@ RUN cd $HOME/work;\
     conda install psutil;\
     conda install -c plotly plotly-orca;\
     git clone --single-branch -b orca https://github.com/electropy/notebooks.git;     \
-    chmod -R 777 $HOME/work/notebooks; \
+    chmod -R 777 $HOME/notebooks; \
     cd notebooks;\
     git clone --single-branch -b master https://github.com/electropy/electropy.git;  \
     cd electropy;\
     pip install -e .;\
     cd ..;
 
-WORKDIR $HOME/work/notebooks
+WORKDIR $HOME/notebooks
 
 USER $NB_UID
 
