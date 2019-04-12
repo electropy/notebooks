@@ -28,11 +28,18 @@ RUN apt-get update && \
         libgconf2-4 \
         xvfb \
         fuse \
+        desktop-file-utils \
         libopenblas-base \
         python3-dev && \
     apt-get clean && \
     apt-get autoremove && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+# google chrome
+RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - && \
+    sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list' && \
+    apt-get update -y && \
+    apt-get install -y google-chrome-stable
 
 
 RUN cd $HOME/work;\
@@ -58,7 +65,7 @@ RUN cd $HOME/work;\
     cd ..;\
     cd bin; \
     wget "https://github.com/plotly/orca/releases/download/v1.2.1/orca-1.2.1-x86_64.AppImage";\
-    chmod +x orca-1.2.1-x86_64.AppImage;
+    chmod 777 orca-1.2.1-x86_64.AppImage;
 
 ENV PATH "/home/jovyan/work/notebooks/bin:$PATH"
 
