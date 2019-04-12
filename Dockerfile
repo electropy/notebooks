@@ -1,4 +1,4 @@
-FROM continuumio/miniconda3
+FROM jupyter/scipy-notebook
 
 USER root
 
