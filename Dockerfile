@@ -29,6 +29,7 @@ RUN apt-get update && \
         xvfb \
         fuse \
         desktop-file-utils \
+        gnupg2 \
         libopenblas-base \
         python3-dev && \
     apt-get clean && \
