@@ -11,7 +11,12 @@ __pycache__/
 # Python-related temp files
 .coverage
 .pytest_cache/
+.ipynb_checkpoints/
 
 # Release-related files
 build/
 dist/
+
+# Images
+*.png
+*.gif
