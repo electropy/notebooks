@@ -59,10 +59,13 @@ RUN cd $HOME/work;\
     cd ..; \
     cd $HOME;
 
-# Download orca binary and make it executable under xvfb
+# Download orca AppImage, extract it, and make it executable under xvfb
 RUN wget https://github.com/plotly/orca/releases/download/v1.1.1/orca-1.1.1-x86_64.AppImage -P /home
 RUN chmod 777 /home/orca-1.1.1-x86_64.AppImage 
-RUN printf '#!/bin/bash \nxvfb-run --auto-servernum --server-args "-screen 0 640x480x24" /home/orca-1.1.1-x86_64.AppImage "$@"' > /usr/bin/orca
+
+# To avoid the need for FUSE, extract the AppImage into a directory (name squashfs-root by default)
+RUN cd /home && /home/orca-1.1.1-x86_64.AppImage --appimage-extract
+RUN printf '#!/bin/bash \nxvfb-run --auto-servernum --server-args "-screen 0 640x480x24" /home/squashfs-root/app/orca "$@"' > /usr/bin/orca
 RUN chmod 777 /usr/bin/orca
 
 WORKDIR $HOME/work/notebooks
