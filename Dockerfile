@@ -58,7 +58,7 @@ RUN cd $HOME/work;\
     cd electropy;\
     pip install -e .;\
     cd ..; \
-    cd $HOME;
+    chmod -R 777 $HOME/work/notebooks;
 
 # Download orca AppImage, extract it, and make it executable under xvfb
 RUN wget https://github.com/plotly/orca/releases/download/v1.1.1/orca-1.1.1-x86_64.AppImage -P /home
