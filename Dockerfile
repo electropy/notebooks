@@ -31,6 +31,7 @@ RUN apt-get update && \
         fuse \
         desktop-file-utils \
         gnupg2 \
+        libxss1 \
         libopenblas-base \
         python3-dev && \
     apt-get clean && \
