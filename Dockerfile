@@ -67,7 +67,7 @@ RUN chmod 777 /home/orca-1.1.1-x86_64.AppImage
 RUN cd /home && /home/orca-1.1.1-x86_64.AppImage --appimage-extract
 RUN printf '#!/bin/bash \nxvfb-run --auto-servernum --server-args "-screen 0 640x480x24" /home/squashfs-root/app/orca "$@"' > /usr/bin/orca
 RUN chmod 777 /usr/bin/orca
-RUN chmod 777 /home/squashfs-root/app/orca
+RUN chmod -R 777 /home/squashfs-root/
 
 WORKDIR $HOME/work/notebooks
 
