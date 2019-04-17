@@ -52,13 +52,14 @@ RUN cd $HOME/work;\
                 nbconvert==5.4.0 \
                 psutil \
                 jupyterlab>=0.35.4; \
-    git clone --single-branch -b orca https://github.com/electropy/notebooks.git;     \
+
+    git clone --single-branch -b orca https://github.com/electropy/notebooks.git;       \
+    chmod -R 777 $HOME/work/notebooks; \
     cd notebooks;\
     git clone --single-branch -b master https://github.com/electropy/electropy.git;  \
     cd electropy;\
     pip install -e .;\
-    cd ..; \
-    chmod -R 777 $HOME/work/notebooks;
+    cd ..;
 
 # Download orca AppImage, extract it, and make it executable under xvfb
 RUN wget https://github.com/plotly/orca/releases/download/v1.1.1/orca-1.1.1-x86_64.AppImage -P /home
