@@ -8,6 +8,9 @@ electropy\.egg-info/
 __pycache__/
 *.pyc
 
+# IPython
+*.ipynb_checkpoints*
+
 # Python-related temp files
 .coverage
 .pytest_cache/
