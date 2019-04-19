@@ -28,9 +28,6 @@ RUN apt-get update && \
         libgtk2.0.0 \
         libgconf2-4 \
         xvfb \
-        fuse \
-        desktop-file-utils \
-        gnupg2 \
         libxss1 \
         libopenblas-base \
         python3-dev && \

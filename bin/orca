@@ -1,2 +1,0 @@
-#!/bin/bash
-xvfb-run -a /home/jovyan/work/notebooks/bin/orca-1.2.1-x86_64.AppImage "$@"
